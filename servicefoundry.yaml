@@ -1,0 +1,17 @@
+build:
+  build_pack: sfy_build_pack_python
+  options:
+    python_version: python:3.9.0
+service:
+  name: fastapi-service
+  cpu:
+    required: 0.05
+    limit: 0.1
+  memory:
+    required: 128000000
+    limit: 512000000
+  workspace: v1:tfy-dub-euwe1-production:demo-workspace
+  ports:
+  - container_port: 8000
+    protocol: TCP
+  replicas: 1
