@@ -5,11 +5,15 @@ from servicefoundry.service import fastapi
 import joblib
 import pandas as pd
 from typing import List
+import mlfoundry
 
 logger = logging.getLogger(__name__)
 app = fastapi.app()
 
-forecaster_loaded = joblib.load('forecaster.py')
+client = mlfoundry.get_client(api_key='ZTg5NzdlMDQtMDU2Mi00NGFkLTg5N2MtNjlkYmIxNDNmMGQ3OjE3OWU3Ng==')
+run = client.get_run('srihari/time-series-pred-skforecaster/clever-duck')
+local_path = run.download_artifact('forecaster.pkl')
+forecaster_loaded = joblib.load(local_path)
 
 @app.post("/predict")
 def predict(lag_series: List[dict]):
