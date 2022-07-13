@@ -15,7 +15,7 @@ app = fastapi.app()
 
 client = mlfoundry.get_client(api_key=os.environ['TFY_API_KEY'])
 
-run = client.get_run('srihari/time-series-pred-skforecaster/clever-duck')
+run = client.get_run('srihari/time-series-pred-skforecaster/pygmy-carp')
 local_path = run.download_artifact('forecaster.pkl')
 forecaster_loaded = joblib.load(local_path)
 
