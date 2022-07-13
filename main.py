@@ -1,16 +1,19 @@
 
+import os
 import logging
-from fastapi.responses import HTMLResponse
-from servicefoundry.service import fastapi
+import mlfoundry
 import joblib
 import pandas as pd
+
+from fastapi.responses import HTMLResponse
+from servicefoundry.service import fastapi
+
 from typing import List
-import mlfoundry
 
 logger = logging.getLogger(__name__)
 app = fastapi.app()
 
-client = mlfoundry.get_client(api_key='ZTg5NzdlMDQtMDU2Mi00NGFkLTg5N2MtNjlkYmIxNDNmMGQ3OjE3OWU3Ng==')
+client = mlfoundry.get_client(api_key=os.environ['TFY_API_KEY'])
 run = client.get_run('srihari/time-series-pred-skforecaster/clever-duck')
 local_path = run.download_artifact('forecaster.pkl')
 forecaster_loaded = joblib.load(local_path)
