@@ -5,11 +5,11 @@ build:
 service:
   name: ts-pred-fast-api-service
   cpu:
-    required: 0.05
-    limit: 0.1
+    required: 1
+    limit: 2
   memory:
-    required: 128000000
-    limit: 512000000
+    required: 512000000
+    limit: 1024000000
   workspace: v1:local:demo-ws
   ports:
   - container_port: 8000
