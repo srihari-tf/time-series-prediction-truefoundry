@@ -10,7 +10,7 @@ service:
   memory:
     required: 512000000
     limit: 1024000000
-  workspace: v1:local:demo-ws
+  workspace: v1:local:test-ws
   ports:
   - container_port: 8000
     protocol: TCP
